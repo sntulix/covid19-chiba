@@ -2,7 +2,7 @@ name: update news
 
 on:
   schedule:
-    - cron: '0 */3 * * *'
+    - cron: '55 */3 * * *'
 
 jobs:
   build:
@@ -65,7 +65,7 @@ jobs:
           git push origin $BRANCH_NAME
 
       - name: Create pull request
-        if: steps.git-diff.outputs.hasdiff == 'true' && steps.branch.outputs.created == 'true'
+        if: steps.git-diff.outputs.hasdiff == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
